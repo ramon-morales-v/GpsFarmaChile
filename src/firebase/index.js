@@ -1,10 +1,12 @@
 import { initializeApp } from "firebase/app"
-import { getAuth } from "firebase/auth"
+import { getAuth, /* signInWithRedirect */ } from "firebase/auth";
+import { GoogleAuthProvider } from "firebase/auth";
+
 
 
 const firebaseConfig = {
 
-   apiKey: "AIzaSyDLbVU6BbijPgN0HQ-mi6oIySK_IFIklbc",
+  apiKey: "AIzaSyDLbVU6BbijPgN0HQ-mi6oIySK_IFIklbc",
   authDomain: "gpsfarmachile.firebaseapp.com",
   projectId: "gpsfarmachile",
   storageBucket: "gpsfarmachile.appspot.com",
@@ -14,10 +16,13 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig)
 
-const auth = getAuth(app)
+const auth = getAuth(app);
+/* signInWithRedirect(auth, provider); */
+
+const provider = new GoogleAuthProvider();
 
 
 
-export { auth }
+export { auth, provider }
 
 

@@ -30,6 +30,27 @@ const routes = [
     path: '/ingreso',
     name: 'ingreso',
     component: () => import('../views/IngresoView.vue')
+  },
+  {
+    path: '/farmacias',
+    name: 'farmacias',
+    component: () => import('../views/FarmaciasView.vue'),
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/turno',
+    name: 'turno',
+    component: () => import('../views/TurnoView.vue'),
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/inicio',
+    name: 'inicio',
+    component: () => import('../views/InicioView.vue')
   }
 ]
 
@@ -45,7 +66,7 @@ router.beforeEach((to, from, next) => {
   }
 
   if (to.matched.some(record => record.meta.requiresAuth) && !auth.currentUser) {
-    next('/login')
+    next('/inicio')
     return;
   }
 
