@@ -1,9 +1,9 @@
 <template>
 	<main class="login">
+		<p>Si estas registrado</p><router-link to="/ingreso">Ingresa aqui</router-link>
+		<router-view />
 		<section class="forms">
 			<form class="register" @submit.prevent="register">
-<router-link to="/ingreso">Ingreso</router-link>
-<router-view />
 <br><br>
 				<h2>Registro Usuarios</h2>
 				<input 
@@ -17,6 +17,7 @@
 				<input 
 					type="submit" 
 					value="Registrar" />
+					<button @click="googleSignIn">Google </button>
 			</form>
 
 			
@@ -27,6 +28,8 @@
 <script>
 import { ref } from 'vue'
 import { useStore } from 'vuex'
+import firebase from '../firebase/index'
+
 
 
 
@@ -50,10 +53,19 @@ export default {
 			register
 		}
 	},
-	
-	methods () {
-
+	methods: {
+		googleSignIn (){
+			const provider = new firebase.auth.GoogleAuthProvider();
+			firebase.auth().signInWithPopup(provider).then(() => {
+				alert("Conectado!")
+			}).catch(err => {
+				console.log(err);
+			});
+			
+		}
 	} 
+	
+	
 }
 </script>
 
@@ -68,15 +80,7 @@ form {
 	padding: 8rem 1rem 1rem;
 }
 
-form.register {
-	color: #FFF;
-	background-color: #42b983;
-	background-image: linear-gradient(
-		to bottom right,
-		#42b983 0%,
-		#42b983 100%
-	);
-}
+
 
 h2 {
 	font-size: 2rem;
@@ -112,17 +116,14 @@ input::placeholder {
 	color: inherit;
 }
 
-form.register input:not([type="submit"]) {
-	color: #FFF;
-	border-bottom: 2px solid #FFF;
-}
 
-form.login input:not([type="submit"]) {
+
+form input:not([type="submit"]) {
 	color: #2c3e50;
 	border-bottom: 2px solid #2c3e50;
 }
 
-form.login input[type="submit"] {
+form input[type="submit"] {
 	background-color: #42b983;
 	color: #FFF;
 	font-weight: 700;
@@ -132,13 +133,5 @@ form.login input[type="submit"] {
 	text-transform: uppercase;
 }
  
-form.register input[type="submit"] {
-	background-color: #FFF;
-	color: #42b983;
-	font-weight: 700;
-	padding: 1rem 2rem;
-	border-radius: 0.5rem;
-	cursor: pointer;
-	text-transform: uppercase;
-}
+
 </style>
