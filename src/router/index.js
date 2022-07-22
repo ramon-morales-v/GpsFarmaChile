@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/HomeView.vue'
 import Login from '../views/LoginView.vue'
+import Ingreso from '../views/IngresoView.vue'
 
 import { auth } from '../firebase'
 
@@ -29,7 +30,7 @@ const routes = [
   {
     path: '/ingreso',
     name: 'ingreso',
-    component: () => import('../views/IngresoView.vue')
+    component: Ingreso
   },
   {
     path: '/farmacias',

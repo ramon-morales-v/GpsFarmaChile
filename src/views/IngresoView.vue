@@ -1,6 +1,6 @@
 <template>
   <main class="login">
-    <br>
+    <br />
     <router-link to="/login">Registro</router-link> |
     <router-link to="/inicio">Volver al Inicio</router-link>
     <router-view />
@@ -42,5 +42,4 @@ export default {
 </script>
 
 <style>
-
 </style>
