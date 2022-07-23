@@ -21,7 +21,7 @@
         <input type="submit" value="Registrar" />
         <p>Registrate con:</p>
         <button @click="googleSignIn">
-          <img src="../assets/logo-google.png" alt="Google" />
+          <img src="../assets/img/logo-google.png" alt="Google" />
         </button>
       </form>
     </section>

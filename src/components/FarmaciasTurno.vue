@@ -2,15 +2,15 @@
   <div>
     <h2>Farmacias de turno del pais</h2>
     <div class="container">
-      <table class="table">
+      <table class="table table-striped">
         <thead>
-          <th>Id</th>
-          <th>Nombre Local</th>
-          <th>Teléfono</th>
-          <th>Comuna</th>
-          <th>Direccion</th>
-          <th>Hora apertura</th>
-          <th>Hora cierre</th>
+          <th scope="col">Id</th>
+          <th scope="col">Nombre Local</th>
+          <th scope="col">Teléfono</th>
+          <th scope="col">Comuna</th>
+          <th scope="col">Direccion</th>
+          <th scope="col">Hora apertura</th>
+          <th scope="col">Hora cierre</th>
         </thead>
         <tbody>
           <tr v-for="item in farmacias" :key="item.local_id">
@@ -21,6 +21,7 @@
             <td>{{ item.local_direccion }}</td>
             <td>{{ item.funcionamiento_hora_apertura }}</td>
             <td>{{ item.funcionamiento_hora_cierre }}</td>
+            <td><input type="text" class="form-control" placeholder="Opina"/><button class="btn btn-success">enviar</button></td>
           </tr>
         </tbody>
       </table>
@@ -36,7 +37,7 @@ export default {
   components: {},
   data: ()=> ({
 
-      farmacias: null
+      farmacias: null,
 
   }),
   created() {

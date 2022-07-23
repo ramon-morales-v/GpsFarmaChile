@@ -1,10 +1,12 @@
 <template>
+<nav class="nav" style="background-color: #e3f2fd;">
   <div id="nav" v-if="$store.state.user">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> |
-    <button @click="$store.dispatch('logout')">Logout</button>
-    Bienvenido:  {{ $store.state.user.email }}
+    <a class="text-success"><router-link to="/"><img src="./assets/img/logo.png" alt="Logo Gps" height="70" width="70"/></router-link></a> |
+    <a class="text-success"><router-link to="/about">Sobre mi</router-link> </a> |
+    <a class="text-success" @click="$store.dispatch('logout')">Cerrar Sesion</a> |
+    <a class="text-success"> Bienvenido:  {{ $store.state.user.email }} </a>
   </div>
+  </nav>
   <router-view/>
 </template>
 
@@ -23,30 +25,9 @@ export default {
 }
 </script>
 
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+<nav class="nav">
+  <a class="nav-link active" aria-current="page" href="#">Active</a>
+  <a class="nav-link" href="#">Link</a>
+  <a class="nav-link" href="#">Link</a>
+  <a class="nav-link disabled">Disabled</a>
+</nav>
