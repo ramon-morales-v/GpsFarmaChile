@@ -1,16 +1,17 @@
- <template>
-  <div>
-    <h2>Farmacias de turno del pais</h2>
-    <div class="container">
-      <table class="table table-striped">
+<template>
+  <div class="container-fluid-responsive">
+    <h2 class="text-success">Farmacias de turno</h2>
+    
+    <div class="container-fluid table-responsive{-sm|-md|-lg|-xl|-xxl} ">
+      <table class="table table-success table-striped bordered border-success">
         <thead>
-          <th scope="col">Id</th>
-          <th scope="col">Nombre Local</th>
-          <th scope="col">Teléfono</th>
-          <th scope="col">Comuna</th>
-          <th scope="col">Direccion</th>
-          <th scope="col">Hora apertura</th>
-          <th scope="col">Hora cierre</th>
+          <th class="text-success">Id</th>
+          <th class="text-success">Nombre Local</th>
+          <th class="text-success">Teléfono</th>
+          <th class="text-success">Comuna</th>
+          <th class="text-success">Dirección</th>
+          <th class="text-success">Hora apertura</th>
+          <th class="text-success">Hora cierre</th>
         </thead>
         <tbody>
           <tr v-for="item in farmacias" :key="item.local_id">
@@ -21,7 +22,6 @@
             <td>{{ item.local_direccion }}</td>
             <td>{{ item.funcionamiento_hora_apertura }}</td>
             <td>{{ item.funcionamiento_hora_cierre }}</td>
-            <td><input type="text" class="form-control" placeholder="Opina"/><button class="btn btn-success">enviar</button></td>
           </tr>
         </tbody>
       </table>
@@ -34,23 +34,18 @@ import axios from "axios";
 
 export default {
   name: "FarmaciasTurno",
-  components: {},
-  data: ()=> ({
-
-      farmacias: null,
-
+  data: () => ({
+    farmacias: null,
   }),
   created() {
-
-      axios
-        .get("http://farmanet.minsal.cl/index.php/ws/getLocalesTurnos")
-        .then( (response) => {
-          this.farmacias = response.data;
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-
+    axios
+      .get("http://farmanet.minsal.cl/index.php/ws/getLocalesTurnos")
+      .then((response) => {
+        this.farmacias = response.data;
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   },
 };
 </script>

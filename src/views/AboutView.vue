@@ -1,13 +1,15 @@
 <template>
-  <main class="about">
-    <h1>About</h1>
-            Bienvenido:  {{ $store.state.user.uid}}
-  </main>
+
+  <div class="container-fluid">
+    <OpinionesTurno/>
+    <MostrarOpiniones/>
+
+  </div>
 </template>
 <script>
+import OpinionesTurno from "../components/OpinionesTurno.vue";
+import MostrarOpiniones from "../components/MostrarOpiniones.vue";
 export default {
-  setup() {
-
-  }
-}
+  components:{ OpinionesTurno, MostrarOpiniones}
+};
 </script >

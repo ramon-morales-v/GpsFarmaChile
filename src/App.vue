@@ -1,28 +1,42 @@
 <template>
-<nav class="nav" style="background-color: #e3f2fd;">
-  <div id="nav" v-if="$store.state.user">
-    <a class="text-success"><router-link to="/"><img src="./assets/img/logo.png" alt="Logo Gps" height="70" width="70"/></router-link></a> |
-    <a class="text-success"><router-link to="/about">Sobre mi</router-link> </a> |
-    <a class="text-success" @click="$store.dispatch('logout')">Cerrar Sesion</a> |
-    <a class="text-success"> Bienvenido:  {{ $store.state.user.email }} </a>
-  </div>
+  <nav class="nav" style="background-color: #e3f2fd">
+    <div id="nav" v-if="$store.state.user">
+      <a class="text-success"
+        ><router-link to="/"
+          ><img
+            src="./assets/img/logo.svg"
+            alt="Logo Gps"
+            height="70"
+            width="70" /></router-link
+      ></a>
+      |
+      <a class="text-success"
+        ><router-link to="/about">Sobre mi</router-link>
+      </a>
+      |
+      <a class="text-success" @click="$store.dispatch('logout')"
+        >Cerrar Sesion</a
+      >
+      |
+      <a class="text-success"> Bienvenido: {{ $store.state.user.email }} </a>
+    </div>
   </nav>
-  <router-view/>
+  <router-view />
 </template>
 
 <script>
-import { onBeforeMount } from 'vue'
-import { useStore } from 'vuex'
+import { onBeforeMount } from "vue";
+import { useStore } from "vuex";
 
 export default {
   setup() {
-    const store = useStore()
+    const store = useStore();
 
     onBeforeMount(() => {
-      store.dispatch('fetchUser')
-    })
-  }
-}
+      store.dispatch("fetchUser");
+    });
+  },
+};
 </script>
 
 <nav class="nav">
